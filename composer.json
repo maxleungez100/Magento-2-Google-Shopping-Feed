@@ -1,5 +1,5 @@
 {
-    "name": "run_as_root/ext-magento2-google-shopping-feed",
+    "name": "mextension/ext-magento2-google-shopping-feed",
     "description": "This module provides a google shopping product feed csv export.",
     "type": "magento2-module",
     "license": "MIT",
