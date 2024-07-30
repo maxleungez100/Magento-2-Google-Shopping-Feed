@@ -5,28 +5,24 @@ declare(strict_types=1);
 namespace RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers;
 
 use Magento\Catalog\Model\Product;
-use Magento\Framework\Url;
-use RunAsRoot\GoogleShoppingFeed\ConfigProvider\UrlSuffixProvider;
 use RunAsRoot\GoogleShoppingFeed\DataProvider\ParentProductProvider;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 class ProductUrlProvider implements AttributeHandlerInterface
 {
-    private Url $url;
     private ParentProductProvider $productProvider;
-    private UrlSuffixProvider $urlSuffixProvider;
     protected $scopeConfig;
+    protected $storeManager;
 
     public function __construct(
-        Url $url,
         ParentProductProvider $productProvider,
-        UrlSuffixProvider $urlSuffixProvider,
-        ScopeConfigInterface $scopeConfig
+        ScopeConfigInterface $scopeConfig,
+        StoreManagerInterface $storeManagerInterface
     ) {
-        $this->url = $url;
         $this->productProvider = $productProvider;
-        $this->urlSuffixProvider = $urlSuffixProvider;
         $this->scopeConfig = $scopeConfig;
+        $this->storeManager = $storeManagerInterface;
     }
 
     public function get(Product $product): ?string
@@ -35,10 +31,15 @@ class ProductUrlProvider implements AttributeHandlerInterface
 
         $prefix_url = $this->scopeConfig->getValue("run_as_root_product_feed/general/url_prefix");
 
+        $store = $this->storeManager->getStore($product->getStoreId());
+
+        $lng = $store->getCode() == "default" ? "en" : "zh";
+
         $url = sprintf(
-            '%s%s%s',
+            '%s/%s/%s/%s',
             $prefix_url,
-            'en/product/',
+            $lng,
+            'product',
             $productForUrlRetrieval->getData('url_key'),
 
         );
