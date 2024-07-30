@@ -1,5 +1,5 @@
 {
-    "name": "runasroot/googleshoppingfed",
+    "name": "runasroot/googleshoppingfeed",
     "description": "This module provides a google shopping product feed csv export.",
     "type": "magento2-module",
     "license": "MIT",
