@@ -8,7 +8,7 @@
             "registration.php"
         ],
         "psr-4": {
-            "RunAsRoot\\GoogleShoppingFed\\": ""
+            "RunAsRoot\\GoogleShoppingFeed\\": ""
         }
     }
 }
