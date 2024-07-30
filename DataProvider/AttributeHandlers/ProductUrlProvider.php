@@ -31,8 +31,9 @@ class ProductUrlProvider implements AttributeHandlerInterface
 
         $url = sprintf(
             '%s%s',
+            'en/product/',
             $productForUrlRetrieval->getData('url_key'),
-            $this->urlSuffixProvider->get()
+            
         );
 
         $routeParamsShort = [
