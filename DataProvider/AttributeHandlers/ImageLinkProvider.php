@@ -29,8 +29,10 @@ class ImageLinkProvider implements AttributeHandlerInterface
     {
         $this->storeManager->setCurrentStore($product->getStoreId());
 
+        $image_url =  $this->productImageUrlProvider->get($product->getImage());
+       
         if ($product->getImage()) {
-            return $this->productImageUrlProvider->get($product->getImage());
+            return $image_url;
         }
 
         $parentProduct = $this->parentProductProvider->get($product);
