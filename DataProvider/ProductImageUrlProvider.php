@@ -9,20 +9,24 @@ use Magento\Framework\Escaper;
 use Magento\Store\Model\StoreManagerInterface;
 use Magento\Framework\UrlInterface;
 
+
 class ProductImageUrlProvider
 {
     private Escaper $escaper;
     private UrlBuilder $imageUrlBuilder;
     protected $storeManager;
 
+
+
     public function __construct(
         Escaper $escaper,
         UrlBuilder $imageUrlBuilder,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
     ) {
         $this->escaper = $escaper;
         $this->imageUrlBuilder = $imageUrlBuilder;
         $this->storeManager = $storeManager;
+
     }
 
     public function get(string $imagePath): string
@@ -31,17 +35,20 @@ class ProductImageUrlProvider
             UrlInterface::URL_TYPE_MEDIA,
             true
         );
-        $imageUrl = $this->imageUrlBuilder->getUrl($imagePath, 'product_page_image_large');
-        if ($secureBaseUrl != "") {
-            $position = strpos($imageUrl, "catalog");
-            if ($position !== false) {
-                $newUrl = substr($imageUrl, $position);
-                $newUrl = $secureBaseUrl . $newUrl;
-            }
-        }
-        if (!isset($newUrl)) {
-            $newUrl =  $imageUrl;
-        }
+       
+        // $imageUrl = $this->imageUrlBuilder->getUrl($imagePath, 'product_page_image_large');
+        // if ($secureBaseUrl != "") {
+        //     $position = strpos($imageUrl, "catalog");
+        //     if ($position !== false) {
+        //         $newUrl = substr($imageUrl, $position);
+        //         $newUrl = $secureBaseUrl . $newUrl;
+        //     }
+        // }
+        // if (!isset($newUrl)) {
+        //     $newUrl =  $imageUrl;
+        // }
+
+        $newUrl  = $secureBaseUrl . "catalog/product" . $imagePath;
 
 
         return $this->escaper->escapeUrl($newUrl);

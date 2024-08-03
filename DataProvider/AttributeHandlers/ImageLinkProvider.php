@@ -18,7 +18,8 @@ class ImageLinkProvider implements AttributeHandlerInterface
     public function __construct(
         ParentProductProvider $parentProductProvider,
         ProductImageUrlProvider $productImageUrlProvider,
-        StoreManagerInterface $storeManager
+        StoreManagerInterface $storeManager,
+
     ) {
         $this->parentProductProvider = $parentProductProvider;
         $this->productImageUrlProvider = $productImageUrlProvider;
@@ -30,7 +31,7 @@ class ImageLinkProvider implements AttributeHandlerInterface
         $this->storeManager->setCurrentStore($product->getStoreId());
 
         $image_url =  $this->productImageUrlProvider->get($product->getImage());
-       
+
         if ($product->getImage()) {
             return $image_url;
         }
