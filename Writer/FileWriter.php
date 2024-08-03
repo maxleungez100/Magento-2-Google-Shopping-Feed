@@ -36,7 +36,7 @@ class FileWriter
             );
         }
 
-        $stream = $this->mediaDirectory->openFile($this->destination, 'w+');
+        $stream = $this->mediaDirectory->openFile($this->destination, 'w');
         $stream->write($content);
         $stream->close();
         return true;
