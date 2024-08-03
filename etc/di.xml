@@ -54,12 +54,12 @@
             <argument name="attributeCode" xsi:type="string">ean</argument>
         </arguments>
     </virtualType>
-    <virtualType name="RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\DescriptionProvider"
+    <!-- <virtualType name="RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\DescriptionProvider"
                  type="RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\SimpleAttributeHandler">
         <arguments>
             <argument name="attributeCode" xsi:type="string">description</argument>
         </arguments>
-    </virtualType>
+    </virtualType> -->
     <virtualType name="RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\NameProvider"
                  type="RunAsRoot\GoogleShoppingFeed\DataProvider\AttributeHandlers\SimpleAttributeHandler">
         <arguments>
