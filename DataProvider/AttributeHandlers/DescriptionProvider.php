@@ -28,7 +28,13 @@ class DescriptionProvider implements AttributeHandlerInterface
 
     public function get(Product $product): ?string
     {
-        $description = strip_tags($product->getDescription());
+        $description = $product->getDescription();
+
+        if (isset($description)) {
+            $description = strip_tags($description);
+        }else{
+            $description = "";
+        }
 
         return $description;
     }
