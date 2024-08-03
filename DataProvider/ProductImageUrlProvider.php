@@ -36,8 +36,11 @@ class ProductImageUrlProvider
             $position = strpos($imageUrl, "catalog");
             if ($position !== false) {
                 $newUrl = substr($imageUrl, $position);
-                $newUrl = $secureBaseUrl. $newUrl;
+                $newUrl = $secureBaseUrl . $newUrl;
             }
+        }
+        if (!isset($newUrl)) {
+            $newUrl =  $imageUrl;
         }
 
 
